@@ -120,8 +120,8 @@ primaryTheme.components = {
         lineHeight: 1.36,
         borderRadius: 4,
         fontWeight: 800,
-        boxShadow: `-1px 2px 6px 0px rgb(0 0 0 / .9)`,
-        [primaryTheme.breakpoints.up("md")]: {
+        boxShadow: `0 0 6px 0 rgb(0 0 0 / .9)`,
+        [primaryTheme.breakpoints.up("sm")]: {
           borderRadius: 6,
           boxShadow: "none"
         },
@@ -131,14 +131,28 @@ primaryTheme.components = {
       },
       sizeMedium: {
         fontSize: 14,
-        height: "auto",
-        minHeight: 40,
-        [primaryTheme.breakpoints.up("md")]: {
+        height: 40,
+        [primaryTheme.breakpoints.up("sm")]: {
           fontSize: 16,
-          minHeight: 42
+          height: 42
         }
       }
-    }
+    },
+    variants: [
+      {
+        props: {
+          variant: "contained",
+          color: "secondary"
+        },
+        style: {
+          ":disabled": {
+            opacity: 0.5,
+            color: AppColors.Light,
+            backgroundColor: AppColors.Secondary
+          }
+        }
+      }
+    ]
   },
   MuiPaper: {
     styleOverrides: {
@@ -151,25 +165,20 @@ primaryTheme.components = {
       }
     }
   },
-  MuiInput: {
-    styleOverrides: {
-      input: {},
-      root: {}
-    }
-  },
   MuiInputBase: {
     styleOverrides: {
       input: {
-        borderRadius: 4,
-        backgroundColor: AppColors.Dark3,
-        height: 24,
+        height: 35,
         fontSize: 14,
         fontWeight: 500,
-
-        [primaryTheme.breakpoints.up("md")]: {
+        boxSizing: "border-box",
+        [primaryTheme.breakpoints.up("sm")]: {
           fontWeight: 800,
-          height: 26,
+          height: 42,
           fontSize: 16
+        },
+        "::placeholder": {
+          fontWeight: 500
         }
       },
       root: {
@@ -178,10 +187,6 @@ primaryTheme.components = {
         },
         "&.MuiFilledInput-root::before": {
           display: "none"
-        },
-        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-          borderColor: "transparent",
-          borderWidth: 0
         }
       }
     }
@@ -190,6 +195,13 @@ primaryTheme.components = {
     styleOverrides: {
       input: {
         padding: "8px 12px"
+      },
+      root: {
+        borderRadius: 4,
+        backgroundColor: AppColors.Dark3,
+        ":hover": {
+          backgroundColor: AppColors.Dark3
+        }
       }
     }
   },
