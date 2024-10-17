@@ -1,0 +1,39 @@
+@use "styles/mixins.scss" as mixins;
+
+.drawer {
+  --drawer-width: 100%;
+
+  background-color: rgb(var(--app-color-dark2));
+
+  @include mixins.media(mobile) {
+    --drawer-width: 50%;
+  }
+
+  @include mixins.media(tablet) {
+    --drawer-width: 320px;
+  }
+
+  .MuiPaper-root {
+    width: var(--drawer-width);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  &__close {
+    width: 30px;
+
+    svg {
+      width: 30px;
+    }
+  }
+
+  &__body {
+    padding: 0;
+  }
+}

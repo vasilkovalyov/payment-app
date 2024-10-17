@@ -190,13 +190,13 @@ primaryTheme.components = {
     styleOverrides: {
       input: {
         padding: "8px 12px"
-      },
-      root: {
-        // height: 35,
-        // overflow: "hidden",
-        // [primaryTheme.breakpoints.up("md")]: {
-        //   height: 42
-        // }
+      }
+    }
+  },
+  MuiDrawer: {
+    styleOverrides: {
+      paper: {
+        backgroundColor: AppColors.Dark3
       }
     }
   }
