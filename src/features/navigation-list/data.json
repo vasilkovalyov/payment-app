@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "name": "Casino Games",
+    "path": "/casino-game"
+  },
+  {
+    "id": "2",
+    "name": "Live Games",
+    "path": "/live-games"
+  },
+  {
+    "id": "3",
+    "name": "TV-Bet",
+    "path": "/tv-bet"
+  },
+  {
+    "id": "4",
+    "name": "Sport Games",
+    "path": "/sport-games"
+  },
+  {
+    "id": "5",
+    "name": "Virtual",
+    "path": "/virtual"
+  },
+  {
+    "id": "6",
+    "name": "Tournaments",
+    "path": "/tournaments"
+  },
+  {
+    "id": "7",
+    "name": "Spin Shop",
+    "path": "/spin-shop"
+  },
+  {
+    "id": "8",
+    "name": "FAQ",
+    "path": "/faq"
+  },
+  {
+    "id": "9",
+    "name": "Support Chat",
+    "path": "/support-chat"
+  }
+]

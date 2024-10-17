@@ -3,11 +3,16 @@ import { Outlet } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 
+import { Header } from "src/widgets/header";
+
 const PublicLayout: FC = () => {
   return (
-    <Box component="main" sx={{ flexGrow: 1 }}>
-      <Outlet />
-    </Box>
+    <>
+      <Header />
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <Outlet />
+      </Box>
+    </>
   );
 };
 

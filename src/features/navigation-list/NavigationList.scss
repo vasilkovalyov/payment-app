@@ -1,0 +1,22 @@
+.navigation-list {
+  &.MuiList-root {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__item {
+    &.MuiButtonBase-root {
+      font-weight: 800;
+      font-size: 16px;
+      min-height: auto;
+    }
+  }
+
+  a {
+    &[aria-current="page"] {
+      color: rgb(Var(--app-color-secondary));
+    }
+  }
+}
