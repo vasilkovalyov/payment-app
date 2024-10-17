@@ -1,2 +1,2 @@
 export { AppColors } from "./colors";
-export { default as primaryTheme } from "./primary";
+export * from "./primary";
