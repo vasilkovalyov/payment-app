@@ -48,6 +48,7 @@ const PromoCode: FC<PromoCodeProps> = ({ placeholder, onClick }) => {
           size="medium"
           onClick={onHandleSubmit}
           disabled={value.length === 0}
+          className="promo-code__button"
         >
           Apply
         </Button>

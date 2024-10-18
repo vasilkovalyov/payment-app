@@ -8,5 +8,13 @@
         gap: 16px;
       }
     }
+
+    &__button {
+      &.MuiButtonBase-root {
+        @include mixins.media(mobile, max) {
+          height: 36px;
+        }
+      }
+    }
   }
 }

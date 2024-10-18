@@ -2,7 +2,11 @@ import { FC, useState } from "react";
 
 import { Typography, Box, Stack, Button } from "@mui/material";
 
-import { PaymentCalculation, PromoCode } from "src/features";
+import {
+  PaymentCalculation,
+  PaymentPanelToggler,
+  PromoCode
+} from "src/features";
 
 import { AppColors } from "src/shared/themes";
 
@@ -46,6 +50,13 @@ const PaymentDeposit: FC = () => {
           0.00
         </Typography>
       </Stack>
+      <Box mb="10px">
+        <PaymentPanelToggler
+          image="/images/mastercard.png"
+          title={"Mastercard, USD"}
+          commision={10}
+        />
+      </Box>
       <PaymentCalculation
         title="Amount"
         amount={21}

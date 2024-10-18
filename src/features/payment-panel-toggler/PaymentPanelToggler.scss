@@ -1,0 +1,45 @@
+@use "styles/mixins.scss" as mixins;
+
+.payment-panel-toggler {
+  &.MuiPaper-root {
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 14px 10px 14px 18px;
+
+    @include mixins.media(mobile) {
+      padding: 14px 20px;
+      border-radius: 10px;
+      gap: 20px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 12px;
+
+    @include mixins.media(mobile) {
+      grid-template-columns: 50px 1fr;
+      column-gap: 20px;
+    }
+  }
+
+  &__bullet {
+    &.MuiTypography-root {
+      font-size: 10px;
+    }
+  }
+
+  &__button {
+    &.MuiButtonBase-root {
+      position: absolute;
+      inset: 0;
+      box-shadow: none;
+      height: 100%;
+    }
+  }
+}

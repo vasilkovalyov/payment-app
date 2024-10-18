@@ -6,3 +6,4 @@ export * from "./promo-code";
 export * from "./payment-card";
 export * from "./card-list";
 export * from "./payment-calculation";
+export * from "./payment-panel-toggler";
