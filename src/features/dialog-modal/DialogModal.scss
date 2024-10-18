@@ -1,4 +1,12 @@
 .dialog-modal {
+  &.MuiDialog-root {
+    top: var(--app-header-height);
+  }
+
+  .MuiBackdrop-root {
+    top: var(--app-header-height);
+  }
+
   &__close-btn {
     &.MuiButtonBase-root {
       height: auto;

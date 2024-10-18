@@ -232,7 +232,7 @@ primaryTheme.components = {
         borderRadius: 10,
         backgroundColor: AppColors.Black2,
         margin: 10,
-        maxHeight: "calc(100% - 50px)",
+        maxHeight: "calc(100% - 40px)",
 
         [primaryTheme.breakpoints.up("md")]: {
           maxWidth: 714,
