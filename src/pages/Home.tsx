@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SectionPayment } from "src/widgets/sections/section-payment";
+import { SectionPayment } from "src/widgets";
 
 const HomePage: FC = () => {
   return (
