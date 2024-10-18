@@ -1,7 +1,12 @@
 import { FC } from "react";
+import { SectionPayment } from "src/widgets/sections/section-payment";
 
 const HomePage: FC = () => {
-  return <>Home page</>;
+  return (
+    <>
+      <SectionPayment />
+    </>
+  );
 };
 
 export default HomePage;
