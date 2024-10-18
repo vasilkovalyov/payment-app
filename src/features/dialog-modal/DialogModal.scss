@@ -1,0 +1,11 @@
+.dialog-modal {
+  &__close-btn {
+    &.MuiButtonBase-root {
+      height: auto;
+      min-width: auto;
+      padding: 0;
+      color: rgb(var(--app-color-light));
+      box-shadow: none;
+    }
+  }
+}
