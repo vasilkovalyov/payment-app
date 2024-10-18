@@ -1,0 +1,12 @@
+@use "styles/mixins.scss" as mixins;
+
+.payment-deposit {
+  .promo-code {
+    &__row {
+      @include mixins.media(mobile, max) {
+        grid-template-columns: 1fr 85px;
+        gap: 16px;
+      }
+    }
+  }
+}
