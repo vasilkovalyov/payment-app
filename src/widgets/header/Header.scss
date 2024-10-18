@@ -6,7 +6,10 @@
   min-height: 64px;
   display: flex;
   padding-block: 16px;
-  min-height: var(--app-header-height);
+
+  @include mixins.media(tablet_lg) {
+    min-height: 84px;
+  }
 
   &__container {
     &.MuiContainer-root {
