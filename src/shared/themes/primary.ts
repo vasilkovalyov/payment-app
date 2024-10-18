@@ -39,7 +39,7 @@ export const primaryTheme = createTheme({
   }
 });
 
-const containerWidth = 1142;
+const containerWidth = 1160;
 const containerPadding = 20;
 
 primaryTheme.typography.h1 = {
