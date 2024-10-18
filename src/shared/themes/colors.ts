@@ -1,6 +1,7 @@
 export enum AppColors {
   Light = "#FFFFFF",
-  Black = "#000000",
+  Black1 = "#000000",
+  Black2 = "#21262C",
   Dark1 = "#202329",
   Dark2 = "#20242A",
   Dark3 = "#30363E",

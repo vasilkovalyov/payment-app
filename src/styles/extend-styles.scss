@@ -1,0 +1,8 @@
+%absoluteButtonToggler {
+  &.MuiButtonBase-root {
+    position: absolute;
+    inset: 0;
+    box-shadow: none;
+    height: 100%;
+  }
+}
