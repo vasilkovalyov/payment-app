@@ -38,6 +38,7 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
         direction="row"
         padding="8px"
         gap="8px"
+        marginInline={{ xs: "0", md: "-34px" }}
         borderRadius={{ xs: "6px", md: "0" }}
       >
         <Typography fontWeight={800}>Current Balance: </Typography>

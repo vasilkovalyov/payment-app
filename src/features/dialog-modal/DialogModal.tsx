@@ -30,7 +30,7 @@ const DialogModal: FC<DialogModalProps> = ({
     <Dialog open={open} onClose={onClose} className="dialog-modal">
       {title && (
         <DialogTitle component="div">
-          <Stack direction="row">
+          <Stack direction="row" alignItems="center" gap="6px">
             {pretitleIcon}
             {title}
           </Stack>

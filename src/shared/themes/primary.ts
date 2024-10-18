@@ -257,7 +257,8 @@ primaryTheme.components = {
   MuiDialogContent: {
     styleOverrides: {
       root: {
-        padding: 0
+        padding: 0,
+        overflow: "visible"
       }
     }
   },
