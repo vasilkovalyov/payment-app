@@ -5,3 +5,4 @@ export * from "./navigation-list";
 export * from "./promo-code";
 export * from "./payment-card";
 export * from "./card-list";
+export * from "./payment-calculation";

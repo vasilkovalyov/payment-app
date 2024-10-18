@@ -168,7 +168,7 @@ primaryTheme.components = {
   MuiInputBase: {
     styleOverrides: {
       input: {
-        height: 35,
+        height: 36,
         fontSize: 14,
         fontWeight: 500,
         boxSizing: "border-box",
@@ -200,6 +200,9 @@ primaryTheme.components = {
         borderRadius: 4,
         backgroundColor: AppColors.Dark3,
         ":hover": {
+          backgroundColor: AppColors.Dark3
+        },
+        "&.Mui-focused": {
           backgroundColor: AppColors.Dark3
         }
       }
