@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "image": "/images/mastercard.png",
+    "title": "Mastercard",
+    "commission": 5
+  },
+  {
+    "id": "2",
+    "image": "/images/visa.png",
+    "title": "Visa",
+    "commission": 5
+  },
+  {
+    "id": "3",
+    "image": "/images/skrill.png",
+    "title": "Skrill",
+    "commission": 0
+  },
+  {
+    "id": "4",
+    "image": "/images/pm.png",
+    "title": "Perfect Money, EUR",
+    "commission": 0
+  },
+  {
+    "id": "5",
+    "image": "/images/piastrix.png",
+    "title": "Piastrix, EUR",
+    "commission": 0
+  },
+  {
+    "id": "6",
+    "image": "/images/sticpay.png",
+    "title": "SticPay",
+    "commission": 0
+  },
+  {
+    "id": "7",
+    "image": "/images/pin.png",
+    "title": "PIN",
+    "commission": 1
+  }
+]
