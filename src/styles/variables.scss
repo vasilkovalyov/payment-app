@@ -1,3 +1,5 @@
+@use "./breakpoints.scss" as breakpoints;
+
 :root {
   --app-color-light: 255 255 255; // #FFFFFF
   --app-color-black: 0 0 0; // #000000
@@ -12,4 +14,12 @@
   --app-color-green: 0 186 97; // #00BA61
   --app-color-blue: 38 88 215; // #2658D7
   --app-color-grey: 144 145 148; // "#909194
+
+  --app-header-height: 64px;
+}
+
+@media (min-width: breakpoints.$tablet_lg) {
+  :root {
+    --app-header-height: 84px;
+  }
 }

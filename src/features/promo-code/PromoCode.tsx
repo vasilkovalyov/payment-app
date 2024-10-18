@@ -1,16 +1,7 @@
 import { FC, useState } from "react";
 
-import {
-  Box,
-  Typography,
-  Stack,
-  Button,
-  TextField,
-  InputAdornment
-} from "@mui/material";
+import { Box, Stack, Button, TextField, InputAdornment } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
-
-import { AppColors } from "src/shared/themes";
 
 export type PromoCodeProps = {
   title?: string;
@@ -19,12 +10,7 @@ export type PromoCodeProps = {
   onClick: (value: string) => void;
 };
 
-const PromoCode: FC<PromoCodeProps> = ({
-  title,
-  subtitle,
-  placeholder,
-  onClick
-}) => {
+const PromoCode: FC<PromoCodeProps> = ({ placeholder, onClick }) => {
   const [value, setValue] = useState<string>("");
 
   function onHandleSubmit(): void {
@@ -36,20 +22,13 @@ const PromoCode: FC<PromoCodeProps> = ({
   }
 
   return (
-    <Stack gap={{ xs: "8px", md: "10px" }}>
-      <Typography variant="h5">{title}</Typography>
-      <Typography
-        variant="body1"
-        color={AppColors.Grey}
-        fontSize={{ xs: "10px", md: "16px" }}
-      >
-        {subtitle}
-      </Typography>
+    <Stack gap={{ xs: "8px", md: "10px" }} className="promo-code">
       <Box
         component="form"
         gap={{ xs: "12px", sm: "24px" }}
         display="grid"
         gridTemplateColumns={{ sm: "1fr 152px" }}
+        className="promo-code__row"
       >
         <TextField
           variant="filled"
@@ -64,12 +43,12 @@ const PromoCode: FC<PromoCodeProps> = ({
           onChange={(e) => onChangeCode(e.currentTarget.value)}
         />
         <Button
-          type="submit"
           variant="contained"
           color="secondary"
           size="medium"
           onClick={onHandleSubmit}
           disabled={value.length === 0}
+          className="promo-code__button"
         >
           Apply
         </Button>
