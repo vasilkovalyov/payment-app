@@ -10,9 +10,15 @@ import {
 
 import { AppColors } from "src/shared/themes";
 
+import { IPaymentCard } from "src/entities/models";
+
 import "./PaymentDeposit.scss";
 
-const PaymentDeposit: FC = () => {
+interface PaymentDepositProps {
+  paymentPlan: IPaymentCard;
+}
+
+const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
   const [promocode, setPromocode] = useState<string | null>(null);
 
   function onChangePromoCode(value: string): void {
@@ -50,13 +56,11 @@ const PaymentDeposit: FC = () => {
           0.00
         </Typography>
       </Stack>
-      <Box mb="10px">
-        <PaymentPanelToggler
-          image="/images/mastercard.png"
-          title={"Mastercard, USD"}
-          commision={10}
-        />
-      </Box>
+      <PaymentPanelToggler
+        image={paymentPlan.image}
+        title={paymentPlan.title}
+        commision={paymentPlan.commission}
+      />
       <PaymentCalculation
         title="Amount"
         amount={21}
@@ -80,6 +84,7 @@ const PaymentDeposit: FC = () => {
       <Button
         variant="contained"
         color="secondary"
+        size="large"
         fullWidth
         onClick={onSubmit}
       >

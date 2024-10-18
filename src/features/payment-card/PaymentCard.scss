@@ -1,6 +1,8 @@
 @use "styles/mixins.scss" as mixins;
+@use "styles/extend-styles.scss";
 
 .payment-card {
+  position: relative;
   text-align: center;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -35,5 +37,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  &__button {
+    @extend %absoluteButtonToggler;
   }
 }

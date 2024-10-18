@@ -21,7 +21,7 @@ const PaymentPanelToggler: FC<PaymentPanelTogglerProps> = ({
   return (
     <Paper elevation={24} className="payment-panel-toggler">
       <Box className="payment-panel-toggler__content">
-        <img src={image} alt={title} />
+        <img src={image} alt={title} className="payment-panel-toggler__logo" />
         <Box>
           <Typography
             variant="body1"

@@ -2,6 +2,10 @@
 
 .payment-deposit {
   .promo-code {
+    @include mixins.media(mobile) {
+      margin-bottom: 12px;
+    }
+
     &__row {
       @include mixins.media(mobile, max) {
         grid-template-columns: 1fr 85px;

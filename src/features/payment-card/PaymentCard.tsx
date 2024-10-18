@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography, Button } from "@mui/material";
 
 import "./PaymentCard.scss";
 
@@ -19,7 +19,7 @@ const PaymentCard: FC<PaymentCardProps> = ({
   onClick
 }) => {
   return (
-    <Paper className="payment-card" elevation={24} onClick={onClick}>
+    <Paper className="payment-card" elevation={24}>
       <Box className="payment-card__logo-wrapper">
         <img src={image} alt={title} className="payment-card__logo" />
       </Box>
@@ -27,6 +27,11 @@ const PaymentCard: FC<PaymentCardProps> = ({
         <Typography variant="caption">{title}</Typography>
         <Typography variant="body2">Commission {commission}%</Typography>
       </Box>
+      <Button
+        variant="text"
+        onClick={onClick}
+        className="payment-card__button"
+      />
     </Paper>
   );
 };

@@ -2,9 +2,14 @@ import { FC, useEffect, useState } from "react";
 import axios from "axios";
 
 import { Box, Container, Typography, Stack } from "@mui/material";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+
+import { CardList, DialogModal, PaymentCard } from "src/features";
 
 import { IPaymentCard } from "src/entities/models";
-import { CardList, PaymentCard } from "src/features";
+import useDialogModal from "src/hooks/useDialogModal";
+
+import { PaymentDeposit } from "../payment-deposit";
 
 enum CardKeyEnum {
   MoneyCards = "money-cards",
@@ -26,6 +31,14 @@ const SectionPayment: FC = () => {
     [CardKeyEnum.CryptoCards]: []
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedPlan, setSelectedPlan] = useState<IPaymentCard | null>(null);
+
+  const { isOpenModal, openModal, closeModal } = useDialogModal();
+
+  function onClickPaymentCard(props: IPaymentCard): void {
+    setSelectedPlan(props);
+    openModal();
+  }
 
   function loadData(): void {
     setIsLoading(true);
@@ -33,8 +46,8 @@ const SectionPayment: FC = () => {
     Promise.all(arrayRequests)
       .then(([response1, response2]) => {
         const dataObj = {
-          [CardKeyEnum.MoneyCards]: response1.data,
-          [CardKeyEnum.CryptoCards]: response2.data
+          [CardKeyEnum.MoneyCards]: response1.data as IPaymentCard[],
+          [CardKeyEnum.CryptoCards]: response2.data as IPaymentCard[]
         };
         setPaymentCards(dataObj);
       })
@@ -44,6 +57,11 @@ const SectionPayment: FC = () => {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  function onCloseModal(): void {
+    setSelectedPlan(null);
+    closeModal();
   }
 
   useEffect(() => {
@@ -63,33 +81,47 @@ const SectionPayment: FC = () => {
           <CardList
             title="Cards, e-money, PIN"
             items={paymentCards[CardKeyEnum.MoneyCards]}
-            renderCard={({ id, image, title, commission }) => (
-              <PaymentCard
-                id={id}
-                image={image}
-                title={title}
-                commission={commission}
-                onClick={() => console.log(id)}
-              />
-            )}
+            renderCard={(props: IPaymentCard) => {
+              const { id, image, title, commission } = props;
+              return (
+                <PaymentCard
+                  id={id}
+                  image={image}
+                  title={title}
+                  commission={commission}
+                  onClick={() => onClickPaymentCard(props)}
+                />
+              );
+            }}
             loading={isLoading}
           />
           <CardList
             title="Cryptocurrency"
             items={paymentCards[CardKeyEnum.CryptoCards]}
-            renderCard={({ id, image, title, commission }) => (
-              <PaymentCard
-                id={id}
-                image={image}
-                title={title}
-                commission={commission}
-                onClick={() => console.log(id)}
-              />
-            )}
+            renderCard={(props: IPaymentCard) => {
+              const { id, image, title, commission } = props;
+              return (
+                <PaymentCard
+                  id={id}
+                  image={image}
+                  title={title}
+                  commission={commission}
+                  onClick={() => onClickPaymentCard(props)}
+                />
+              );
+            }}
             loading={isLoading}
           />
         </Stack>
       </Container>
+      <DialogModal
+        open={isOpenModal}
+        title="Back to Payment Methods"
+        pretitleIcon={<ChevronLeftIcon />}
+        onClose={onCloseModal}
+      >
+        {selectedPlan && <PaymentDeposit paymentPlan={selectedPlan} />}
+      </DialogModal>
     </Box>
   );
 };
