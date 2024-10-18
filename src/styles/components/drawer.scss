@@ -3,6 +3,8 @@
 .drawer {
   --drawer-width: 100%;
 
+  background-color: rgb(var(--app-color-dark2));
+
   @include mixins.media(mobile) {
     --drawer-width: 50%;
   }

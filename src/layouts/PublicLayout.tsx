@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 
-import { Header } from "src/widgets";
+import { Header } from "src/widgets/header";
 
 const PublicLayout: FC = () => {
   return (
