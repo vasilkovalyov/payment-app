@@ -3,4 +3,6 @@ export interface IPaymentCard {
   image: string;
   title: string;
   commission: number;
+  popular?: boolean;
+  trusted?: boolean;
 }

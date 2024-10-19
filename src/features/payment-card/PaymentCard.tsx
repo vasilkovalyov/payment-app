@@ -9,6 +9,8 @@ interface PaymentCardProps {
   image: string;
   title: string;
   commission: number;
+  popular?: boolean;
+  trusted?: boolean;
   onClick: () => void;
 }
 
@@ -16,10 +18,27 @@ const PaymentCard: FC<PaymentCardProps> = ({
   image,
   title,
   commission,
+  popular,
+  trusted,
   onClick
 }) => {
+  if (popular && trusted) {
+    throw new Error(
+      "You can only set one of the properties: popular or trusted"
+    );
+  }
   return (
     <Paper className="payment-card" elevation={24}>
+      {popular && (
+        <Box className="payment-card__badge payment-card__badge--popular">
+          popular
+        </Box>
+      )}
+      {trusted && (
+        <Box className="payment-card__badge payment-card__badge--trusted">
+          trusted
+        </Box>
+      )}
       <Box className="payment-card__logo-wrapper">
         <img src={image} alt={title} className="payment-card__logo" />
       </Box>
