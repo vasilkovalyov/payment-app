@@ -1,0 +1,11 @@
+@use "styles/extend-styles.scss";
+
+.search {
+  &__toggler {
+    &.MuiButtonBase-root {
+      @extend %resetSizesButton;
+
+      color: rgb(var(--app-color-light));
+    }
+  }
+}

@@ -1,8 +1,18 @@
 import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, Button, Stack, Avatar } from "@mui/material";
 
-import { MenuToggler, NavigationDrawer, NavigationList } from "src/features";
+import {
+  IconGift,
+  MenuToggler,
+  NavigationDrawer,
+  NavigationList
+} from "src/features";
+
+import { Search } from "../search";
+import { Notifications } from "../notifications";
+import { BalanceButton } from "../balance-button";
 
 import "./Header.scss";
 
@@ -29,17 +39,43 @@ const Header: FC = () => {
             active={isOpen}
             ariaLabel="menu opener"
             onClick={onToggleMenu}
+            aria-label="menu navigation opener"
           />
-
-          <img
-            src="/images/logo.svg"
-            alt="payment app"
-            width={25}
-            height={32}
-            className="header__logo"
-          />
+          <Button
+            className="header__logo-toggler"
+            onClick={onToggleMenu}
+            aria-label="menu navigation opener"
+          >
+            <img
+              src="/images/logo.svg"
+              alt="payment app"
+              width={25}
+              height={32}
+              className="header__logo"
+            />
+          </Button>
         </Stack>
-        <Box className="header__tools" />
+        <Stack
+          className="header__right-side"
+          direction="row"
+          alignItems="center"
+          gap={{ xs: "10px", lg: "22px" }}
+        >
+          <Stack
+            className="header__tools"
+            direction="row"
+            alignItems="center"
+            gap={{ xs: "10px", lg: "22px" }}
+          >
+            <Search />
+            <Link to="#" aria-label="link to the  gift page">
+              <IconGift />
+            </Link>
+            <Notifications />
+          </Stack>
+          <BalanceButton />
+          <Avatar className="header__user-avatar" src="/images/avatar.jpeg" />
+        </Stack>
       </Container>
       <NavigationDrawer open={isOpen} onClose={onCloseMenu}>
         <NavigationList />
