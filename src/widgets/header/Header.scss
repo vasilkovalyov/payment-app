@@ -1,4 +1,5 @@
 @use "styles/mixins.scss" as mixins;
+@use "styles/breakpoints.scss" as breakpoints;
 
 .header {
   box-shadow: 0 2px 7px 0 rgb(var(--app-color-black) / 0.72);
@@ -14,16 +15,55 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
   }
 
   &__logo {
     position: relative;
     top: -4px;
+    cursor: pointer;
 
     @include mixins.media(tablet_lg) {
       width: 34px;
       height: 42px;
+    }
+  }
+
+  &__logo-toggler {
+    &.MuiButtonBase-root {
+      padding: 0;
+      height: auto;
+      min-width: auto;
+    }
+  }
+
+  &__tools {
+    &.MuiStack-root {
+      @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
+        display: none;
+      }
+    }
+
+    a {
+      display: inline-flex;
+    }
+  }
+
+  &__user-avatar {
+    &.MuiAvatar-root {
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgb(var(--app-color-violet));
+
+      @include mixins.media(breakpoints.$mobile_breakpoint_max, max) {
+        display: none;
+      }
+
+      @include mixins.media(tablet_lg) {
+        width: 52px;
+        height: 52px;
+      }
     }
   }
 }

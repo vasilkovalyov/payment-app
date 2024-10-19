@@ -1,0 +1,20 @@
+@use "styles/extend-styles.scss";
+
+.notifications {
+  &__toggler {
+    &.MuiButtonBase-root {
+      @extend %resetSizesButton;
+
+      color: rgb(var(--app-color-light));
+
+      svg {
+        font-size: 28px;
+      }
+    }
+
+    .MuiBadge-badge {
+      top: 6px;
+      right: 6px;
+    }
+  }
+}
