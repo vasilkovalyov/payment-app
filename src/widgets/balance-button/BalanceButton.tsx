@@ -6,11 +6,15 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 
 import { useAppSelector } from "src/app/store/store";
 import { getUser } from "src/app/store/slices/user/userSlice";
+import { getSettings } from "src/app/store/slices/settings/settingsSlice";
+
+import { getFormattedCurrency } from "src/shared/utils";
 
 import "./BalanceButton.scss";
 
 const BalanceButton: FC = () => {
   const user = useAppSelector(getUser);
+  const settings = useAppSelector(getSettings);
 
   return (
     <Box className="balance-button">
@@ -19,7 +23,7 @@ const BalanceButton: FC = () => {
         aria-label="more info balance"
       >
         <Typography component="span" className="balance-button__value">
-          {user?.balance} $
+          {user && getFormattedCurrency(user.balance)} {settings.currencySymbol}
         </Typography>
         <Typography component="span" className="balance-button__percent">
           {user?.percent}%

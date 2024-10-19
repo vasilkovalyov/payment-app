@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { Typography, Stack, Grid, Button } from "@mui/material";
 
 import { AppColors } from "src/shared/themes";
+import { getFormattedCurrency } from "src/shared/utils";
 
 import "./PaymentCalculation.scss";
 
@@ -11,6 +12,8 @@ export type PaymentCalculationProps = {
   amount: number;
   maxAmount: number;
   increaseAmounts: number[];
+  currencySybmol: string;
+  currencyType: string;
   onChange: (amount: number) => void;
 };
 
@@ -19,6 +22,8 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
   amount,
   maxAmount,
   increaseAmounts,
+  currencySybmol,
+  currencyType,
   onChange
 }) => {
   const [updatedAmount, setUpdatedAmount] = useState<number>(amount);
@@ -52,7 +57,7 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
             fontWeight={800}
             fontSize={{ md: "18px" }}
           >
-            $
+            {currencySybmol}
           </Typography>
           <Typography
             variant="body1"
@@ -70,7 +75,8 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
                 onClick={() => onUpdateAmount(number)}
                 disabled={isRichMaxAmount(number)}
               >
-                + {""} ${number}
+                + {""} {currencySybmol}
+                {number}
               </Button>
             </Grid>
           ))}
@@ -81,7 +87,8 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
         fontSize={{ xs: "12px", md: "14px" }}
         textAlign="center"
       >
-        From {updatedAmount} to {maxAmount} USD at a time
+        From {updatedAmount} to {getFormattedCurrency(maxAmount)} {currencyType}{" "}
+        at a time
       </Typography>
     </Stack>
   );
