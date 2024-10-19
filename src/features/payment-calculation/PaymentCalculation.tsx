@@ -11,13 +11,15 @@ export type PaymentCalculationProps = {
   amount: number;
   maxAmount: number;
   increaseAmounts: number[];
+  onChange: (amount: number) => void;
 };
 
 const PaymentCalculation: FC<PaymentCalculationProps> = ({
   title,
   amount,
   maxAmount,
-  increaseAmounts
+  increaseAmounts,
+  onChange
 }) => {
   const [updatedAmount, setUpdatedAmount] = useState<number>(amount);
 
@@ -26,7 +28,9 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
 
   function onUpdateAmount(value: number): void {
     if (isRichMaxAmount(value)) return;
-    setUpdatedAmount((prev) => prev + value);
+    const updateAmount = updatedAmount + value;
+    setUpdatedAmount(updateAmount);
+    onChange(updateAmount);
   }
 
   return (
@@ -77,7 +81,7 @@ const PaymentCalculation: FC<PaymentCalculationProps> = ({
         fontSize={{ xs: "12px", md: "14px" }}
         textAlign="center"
       >
-        From {updatedAmount} to 906.00 USD at a time
+        From {updatedAmount} to {maxAmount} USD at a time
       </Typography>
     </Stack>
   );

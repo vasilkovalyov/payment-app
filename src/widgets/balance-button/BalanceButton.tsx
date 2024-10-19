@@ -4,9 +4,14 @@ import { Box, Button, Typography } from "@mui/material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 
+import { useAppSelector } from "src/app/store/store";
+import { getUser } from "src/app/store/slices/user/userSlice";
+
 import "./BalanceButton.scss";
 
 const BalanceButton: FC = () => {
+  const user = useAppSelector(getUser);
+
   return (
     <Box className="balance-button">
       <Button
@@ -14,10 +19,10 @@ const BalanceButton: FC = () => {
         aria-label="more info balance"
       >
         <Typography component="span" className="balance-button__value">
-          125.02 $
+          {user?.balance} $
         </Typography>
         <Typography component="span" className="balance-button__percent">
-          13%
+          {user?.percent}%
         </Typography>
         <KeyboardArrowDownRoundedIcon />
       </Button>

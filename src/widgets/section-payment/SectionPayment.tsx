@@ -64,6 +64,13 @@ const SectionPayment: FC = () => {
     closeModal();
   }
 
+  function onSubmitPaymentDeposit(
+    amount: number,
+    promocode: string | null
+  ): void {
+    console.log(amount, promocode);
+  }
+
   useEffect(() => {
     loadData();
   }, []);
@@ -122,7 +129,12 @@ const SectionPayment: FC = () => {
         pretitleIcon={<ChevronLeftIcon />}
         onClose={onCloseModal}
       >
-        {selectedPlan && <PaymentDeposit paymentPlan={selectedPlan} />}
+        {selectedPlan && (
+          <PaymentDeposit
+            paymentPlan={selectedPlan}
+            onSubmit={onSubmitPaymentDeposit}
+          />
+        )}
       </DialogModal>
     </Box>
   );

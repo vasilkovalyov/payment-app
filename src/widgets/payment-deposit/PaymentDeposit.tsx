@@ -12,21 +12,33 @@ import { AppColors } from "src/shared/themes";
 
 import { IPaymentCard } from "src/entities/models";
 
+import { useAppSelector } from "src/app/store/store";
+import { getUser } from "src/app/store/slices/user/userSlice";
+
 import "./PaymentDeposit.scss";
 
 interface PaymentDepositProps {
   paymentPlan: IPaymentCard;
+  onSubmit: (amount: number, promocode: string | null) => void;
 }
 
-const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
+const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan, onSubmit }) => {
+  const user = useAppSelector(getUser);
+  const [amount, setAmount] = useState<number>(21);
+  const maxAmount = 906.0;
+
   const [promocode, setPromocode] = useState<string | null>(null);
 
   function onChangePromoCode(value: string): void {
     setPromocode(value);
   }
 
-  function onSubmit(): void {
-    alert(promocode);
+  function onHandleSubmit(): void {
+    onSubmit(amount, promocode);
+  }
+
+  function onChangePaymentCalculation(value: number): void {
+    setAmount(value);
   }
 
   return (
@@ -54,7 +66,7 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
           fontSize={{ xs: "18px", md: "24px" }}
           fontWeight={900}
         >
-          0.00
+          {user?.balance}
         </Typography>
       </Stack>
       <PaymentPanelToggler
@@ -64,9 +76,10 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
       />
       <PaymentCalculation
         title="Amount"
-        amount={21}
-        maxAmount={906}
+        amount={amount}
+        maxAmount={maxAmount}
         increaseAmounts={[10, 20, 30, 50, 100]}
+        onChange={onChangePaymentCalculation}
       />
       <Box>
         <Typography
@@ -87,7 +100,7 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan }) => {
         color="secondary"
         size="large"
         fullWidth
-        onClick={onSubmit}
+        onClick={onHandleSubmit}
       >
         Deposit
       </Button>
