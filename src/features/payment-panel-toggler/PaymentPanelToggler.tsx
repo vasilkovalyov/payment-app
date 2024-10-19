@@ -9,6 +9,7 @@ interface PaymentPanelTogglerProps {
   image: string;
   title: string;
   commision: number;
+  currencyType: string;
   onClick?: () => void;
 }
 
@@ -16,6 +17,7 @@ const PaymentPanelToggler: FC<PaymentPanelTogglerProps> = ({
   image,
   title,
   commision,
+  currencyType,
   onClick
 }) => {
   return (
@@ -39,7 +41,7 @@ const PaymentPanelToggler: FC<PaymentPanelTogglerProps> = ({
             Comission {commision}%
           </Typography>
           <Typography variant="body2" fontSize={{ xs: "6px", sm: "12px" }}>
-            Please notice that you will send money in the USD
+            Please notice that you will send money in the {currencyType}
           </Typography>
         </Box>
       </Box>
