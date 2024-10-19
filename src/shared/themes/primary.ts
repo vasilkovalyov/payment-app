@@ -52,6 +52,11 @@ primaryTheme.typography.h2 = {
   fontWeight: 800
 };
 
+primaryTheme.typography.h3 = {
+  fontSize: 18,
+  fontWeight: 800
+};
+
 primaryTheme.typography.h5 = {
   fontSize: 18,
   fontWeight: 800

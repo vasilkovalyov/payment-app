@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 
-import { Box, Container, Typography, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 import { CardList, DialogModal, PaymentCard } from "src/features";
@@ -76,14 +76,8 @@ const SectionPayment: FC = () => {
   }, []);
 
   return (
-    <Box component="section" py={{ xs: "22px", md: "34px" }}>
+    <Box component="section" pb={{ xs: "20px", md: "30px" }}>
       <Container>
-        <Typography variant="h2" mb={{ xs: "16px", md: "34px" }}>
-          Make a deposit
-        </Typography>
-        <Typography variant="h5" mb="24px">
-          Choose payment method
-        </Typography>
         <Stack gap="40px">
           <CardList
             title="Cards, e-money, PIN"
