@@ -1,11 +1,16 @@
 import { FC } from "react";
-import { SectionPayment, SectionPromocode } from "src/widgets";
+import {
+  SectionListTransaction,
+  SectionPayment,
+  SectionPromocode
+} from "src/widgets";
 
 const HomePage: FC = () => {
   return (
     <>
       <SectionPayment />
       <SectionPromocode />
+      <SectionListTransaction />
     </>
   );
 };

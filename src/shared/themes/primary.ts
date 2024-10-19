@@ -275,5 +275,15 @@ primaryTheme.components = {
         padding: 0
       }
     }
+  },
+  MuiTableCell: {
+    styleOverrides: {
+      root: {
+        paddingBlock: 16,
+        paddingLeft: 0,
+        paddingRight: 16,
+        borderColor: AppColors.Black3
+      }
+    }
   }
 };

@@ -18,7 +18,7 @@ enum CardKeyEnum {
 
 const arrayUrl = [
   "/data/payment-money-cards.json?url",
-  "/data/payment-crypto.cards.json?url"
+  "/data/payment-crypto-cards.json?url"
 ];
 
 const arrayRequests = [axios.get(arrayUrl[0]), axios.get(arrayUrl[1])];
@@ -30,7 +30,7 @@ const SectionPayment: FC = () => {
     [CardKeyEnum.MoneyCards]: [],
     [CardKeyEnum.CryptoCards]: []
   });
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedPlan, setSelectedPlan] = useState<IPaymentCard | null>(null);
 
   const { isOpenModal, openModal, closeModal } = useDialogModal();
