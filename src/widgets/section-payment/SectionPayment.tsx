@@ -82,13 +82,15 @@ const SectionPayment: FC = () => {
             title="Cards, e-money, PIN"
             items={paymentCards[CardKeyEnum.MoneyCards]}
             renderCard={(props: IPaymentCard) => {
-              const { id, image, title, commission } = props;
+              const { id, image, title, commission, popular, trusted } = props;
               return (
                 <PaymentCard
                   id={id}
                   image={image}
                   title={title}
                   commission={commission}
+                  popular={popular}
+                  trusted={trusted}
                   onClick={() => onClickPaymentCard(props)}
                 />
               );

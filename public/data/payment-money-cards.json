@@ -3,13 +3,15 @@
     "id": "1",
     "image": "/images/mastercard.png",
     "title": "Mastercard",
-    "commission": 5
+    "commission": 5,
+    "popular": true
   },
   {
     "id": "2",
     "image": "/images/visa.png",
     "title": "Visa",
-    "commission": 5
+    "commission": 5,
+    "trusted": true
   },
   {
     "id": "3",
