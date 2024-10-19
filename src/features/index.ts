@@ -8,3 +8,5 @@ export * from "./card-list";
 export * from "./payment-calculation";
 export * from "./payment-panel-toggler";
 export * from "./dialog-modal";
+export * from "./icon-search";
+export * from "./icon-gift";

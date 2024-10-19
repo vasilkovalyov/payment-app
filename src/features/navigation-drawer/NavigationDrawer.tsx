@@ -5,13 +5,13 @@ import { Box, Drawer } from "@mui/material";
 
 import { MenuToggler } from "../menu-toggler";
 
-interface HeaderProfileProps {
+interface NavigationDrawerProps {
   children?: React.ReactNode;
   open: boolean;
   onClose: () => void;
 }
 
-const HeaderProfile: FC<HeaderProfileProps> = ({
+const NavigationDrawer: FC<NavigationDrawerProps> = ({
   children,
   open = false,
   onClose
@@ -47,6 +47,7 @@ const HeaderProfile: FC<HeaderProfileProps> = ({
             onClick={onClose}
             className="drawer__close"
             ariaLabel="menu close"
+            aria-label="menu navigation close"
           />
         </Box>
         <Box className="drawer__body">{children}</Box>
@@ -55,4 +56,4 @@ const HeaderProfile: FC<HeaderProfileProps> = ({
   );
 };
 
-export default HeaderProfile;
+export default NavigationDrawer;
