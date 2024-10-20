@@ -22,22 +22,38 @@ import { TransactionRow, TransactionRowLoader } from "./ui";
 import "./SectionListTransaction.scss";
 
 const transactionUrl = "/data/transaction-list.json?url";
+const transactionRestUrl = "/data/transaction-list-rest.json?url";
 
 const SectionListTransaction: FC = () => {
   const settings = useAppSelector(getSettings);
 
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [isShowingLoadmore, setIsShowingLoadmore] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
 
   async function loadData(): Promise<void> {
     try {
       setIsLoading(true);
-      const response = await axios.get(transactionUrl);
+      const response = await axios.get<ITransaction[]>(transactionUrl);
       setTransactions(response.data);
     } catch (e) {
       console.log(e);
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function onLoadMore(): Promise<void> {
+    try {
+      setIsLoadingMore(true);
+      const response = await axios.get<ITransaction[]>(transactionRestUrl);
+      setIsShowingLoadmore(false);
+      setTransactions((prev) => [...prev, ...response.data]);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoadingMore(false);
     }
   }
 
@@ -87,15 +103,19 @@ const SectionListTransaction: FC = () => {
             </Table>
           </TableContainer>
         </Box>
-        <Stack alignItems="center">
-          <Button
-            variant="contained"
-            color="secondary"
-            className="section-list-transaction__show-more-button"
-          >
-            Show More
-          </Button>
-        </Stack>
+        {isShowingLoadmore && (
+          <Stack alignItems="center">
+            <Button
+              variant="contained"
+              color="secondary"
+              className="section-list-transaction__show-more-button"
+              disabled={isLoadingMore}
+              onClick={onLoadMore}
+            >
+              Show More
+            </Button>
+          </Stack>
+        )}
       </Container>
     </Box>
   );
