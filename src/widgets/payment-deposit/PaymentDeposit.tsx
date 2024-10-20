@@ -27,6 +27,8 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan, onSubmit }) => {
   const user = useAppSelector(getUser);
   const settings = useAppSelector(getSettings);
 
+  const [isSuccessPromocode, setIsSuccessPromocode] = useState<boolean>(false);
+
   const [amount, setAmount] = useState<number>(21);
   const maxAmount = 906.0;
 
@@ -34,6 +36,7 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan, onSubmit }) => {
 
   function onChangePromoCode(value: string): void {
     setPromocode(value);
+    setIsSuccessPromocode(true);
   }
 
   function onHandleSubmit(): void {
@@ -96,8 +99,8 @@ const PaymentDeposit: FC<PaymentDepositProps> = ({ paymentPlan, onSubmit }) => {
           Promo Code
         </Typography>
         <PromoCode
-          title="Promo Code"
           placeholder="Enter promo code here"
+          success={isSuccessPromocode}
           onClick={onChangePromoCode}
         />
       </Box>
