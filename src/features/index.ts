@@ -10,3 +10,4 @@ export * from "./payment-panel-toggler";
 export * from "./dialog-modal";
 export * from "./icon-search";
 export * from "./icon-gift";
+export * from "./sort-toggle";

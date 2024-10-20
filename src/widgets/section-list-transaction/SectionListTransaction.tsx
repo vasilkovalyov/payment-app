@@ -17,6 +17,10 @@ import { ITransaction } from "src/entities/models/transaction";
 import { useAppSelector } from "src/app/store/store";
 import { getSettings } from "src/app/store/slices/settings/settingsSlice";
 
+import { SortEnum } from "src/entities/models/sort";
+import { SortToggle } from "src/features";
+import { sortServiceInst } from "src/shared/sort-service";
+
 import { TransactionRow, TransactionRowLoader } from "./ui";
 
 import "./SectionListTransaction.scss";
@@ -57,6 +61,14 @@ const SectionListTransaction: FC = () => {
     }
   }
 
+  function onChangeSort(sortType: SortEnum): void {
+    const result = sortServiceInst.getSortedData(
+      [...transactions],
+      sortType
+    ) as ITransaction[];
+    setTransactions(result);
+  }
+
   useEffect(() => {
     loadData();
   }, []);
@@ -68,9 +80,16 @@ const SectionListTransaction: FC = () => {
       className="section-list-transaction"
     >
       <Container className="section-list-transaction__container">
-        <Typography variant="h2" mb={{ xs: "16px", md: "16px" }}>
-          Last Transactions
-        </Typography>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          gap="20px"
+          mb={{ xs: "16px", md: "16px" }}
+        >
+          <Typography variant="h2">Last Transactions</Typography>
+          <SortToggle onChange={onChangeSort} />
+        </Stack>
+
         <Box mb={{ xs: "16px", md: "36px" }}>
           <TableContainer className="transaction-table">
             <Table aria-label="transaction list">
