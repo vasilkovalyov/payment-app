@@ -1,0 +1,18 @@
+.section-list-transaction {
+  &__container {
+    &.MuiContainer-root {
+      max-width: 1240px;
+    }
+  }
+
+  &__show-more-button {
+    max-width: 280px;
+    width: 100%;
+  }
+}
+
+.transaction-table {
+  .MuiTable-root {
+    border-spacing: 16px 16px;
+  }
+}

@@ -12,7 +12,7 @@ const SectionPromocode: FC = () => {
     <Box component="section" py={{ xs: "10px", md: "10px" }}>
       <Container>
         <Stack gap="10px" maxWidth="664px">
-          <Typography variant="h5">Have A promo code?</Typography>
+          <Typography variant="h3">Have A promo code?</Typography>
           <Typography variant="body2" fontSize={{ xs: "10px", md: "16px" }}>
             Enter promo code here. It will activate a special bonus!
           </Typography>

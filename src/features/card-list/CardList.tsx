@@ -46,7 +46,7 @@ const CardList = <T extends { id: string }>({
   return (
     <Box>
       {title && (
-        <Typography variant="h6" mb="20px">
+        <Typography variant="h3" mb="20px" fontSize="16px">
           {title}
         </Typography>
       )}

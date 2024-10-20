@@ -1,0 +1,34 @@
+@use "styles/extend-styles.scss";
+
+.sort-toggle {
+  &__button {
+    &.MuiButtonBase-root {
+      @extend %resetSizesButton;
+
+      border-radius: 4px;
+      color: rgb(var(--app-color-light));
+      background-color: rgb(var(--app-color-dark3));
+      width: 42px;
+      height: 42px;
+      padding: 4px;
+    }
+  }
+
+  &__menu {
+    .MuiPaper-root {
+      background-color: rgb(var(--app-color-dark3));
+    }
+
+    .MuiList-root {
+      padding: 0;
+      width: 120px;
+    }
+  }
+
+  &__menu-item {
+    &.MuiButtonBase-root {
+      font-weight: 800;
+      font-size: 14px;
+    }
+  }
+}

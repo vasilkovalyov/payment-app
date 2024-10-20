@@ -50,6 +50,7 @@ const PaymentCard: FC<PaymentCardProps> = ({
         variant="text"
         onClick={onClick}
         className="payment-card__button"
+        aria-label="open modal deposit"
       />
     </Paper>
   );

@@ -33,6 +33,9 @@ const PromoCode: FC<PromoCodeProps> = ({ placeholder, onClick }) => {
         <TextField
           variant="filled"
           placeholder={placeholder}
+          inputProps={{
+            "aria-label": "promocode"
+          }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
