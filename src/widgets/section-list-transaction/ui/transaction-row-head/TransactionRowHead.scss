@@ -1,0 +1,41 @@
+@use "styles/mixins.scss" as mixins;
+
+.transaction-row-head {
+  border-radius: 4px;
+  background-color: rgb(var(--app-color-dark3));
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include mixins.media(tablet) {
+    display: none;
+  }
+
+  &__logo {
+    max-width: 58px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-self: flex-start;
+
+    img {
+      max-height: 30px;
+    }
+  }
+
+  &__title {
+    &.MuiTypography-root {
+      font-size: 12px;
+      text-align: right;
+      margin-bottom: 4px;
+    }
+  }
+  &__head {
+    &.MuiTypography-root {
+      font-size: 8px;
+      text-align: right;
+    }
+  }
+}

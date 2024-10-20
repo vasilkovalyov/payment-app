@@ -78,7 +78,7 @@ const SectionPayment: FC = () => {
   return (
     <Box component="section" pb={{ xs: "20px", md: "30px" }}>
       <Container>
-        <Stack gap="40px">
+        <Stack gap="40px" maxWidth="1122px">
           <CardList
             title="Cards, e-money, PIN"
             items={paymentCards[CardKeyEnum.MoneyCards]}

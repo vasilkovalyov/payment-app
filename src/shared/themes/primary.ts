@@ -39,7 +39,7 @@ export const primaryTheme = createTheme({
   }
 });
 
-const containerWidth = 1160;
+const containerWidth = 1240;
 const containerPadding = 20;
 
 primaryTheme.typography.h1 = {
@@ -48,8 +48,11 @@ primaryTheme.typography.h1 = {
 };
 
 primaryTheme.typography.h2 = {
-  fontSize: 24,
-  fontWeight: 800
+  fontSize: 18,
+  fontWeight: 800,
+  [primaryTheme.breakpoints.up("md")]: {
+    fontSize: 24
+  }
 };
 
 primaryTheme.typography.h3 = {
