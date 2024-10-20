@@ -7,7 +7,7 @@ export const sortList: SortType[] = [
   },
   {
     name: "Date DESC",
-    value: SortEnum.AmountDESC
+    value: SortEnum.DateDESC
   },
   {
     name: "Price ASC",

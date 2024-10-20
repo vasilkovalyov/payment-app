@@ -31,6 +31,7 @@ const transactionRestUrl = "/data/transaction-list-rest.json?url";
 const SectionListTransaction: FC = () => {
   const settings = useAppSelector(getSettings);
 
+  const [sortType, setSortType] = useState<SortEnum | null>(null);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isShowingLoadmore, setIsShowingLoadmore] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,6 +50,7 @@ const SectionListTransaction: FC = () => {
   }
 
   async function onLoadMore(): Promise<void> {
+    setSortType(null);
     try {
       setIsLoadingMore(true);
       const response = await axios.get<ITransaction[]>(transactionRestUrl);
@@ -61,11 +63,12 @@ const SectionListTransaction: FC = () => {
     }
   }
 
-  function onChangeSort(sortType: SortEnum): void {
+  function onChangeSort(sortTypeValue: SortEnum): void {
     const result = sortServiceInst.getSortedData(
       [...transactions],
-      sortType
+      sortTypeValue
     ) as ITransaction[];
+    setSortType(sortTypeValue);
     setTransactions(result);
   }
 
@@ -92,7 +95,7 @@ const SectionListTransaction: FC = () => {
             </Typography>{" "}
             Transactions
           </Typography>
-          <SortToggle onChange={onChangeSort} />
+          <SortToggle onChange={onChangeSort} sortTypeValue={sortType} />
         </Stack>
 
         <Box mb={{ xs: "16px", md: "36px" }}>

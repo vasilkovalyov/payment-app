@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, useEffect } from "react";
 
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -10,10 +10,12 @@ import { sortList } from "src/shared/sort-list";
 import "./SortToggle.scss";
 
 export type SortToggleProps = {
+  sortTypeValue: SortEnum | null;
   onChange: (type: SortEnum) => void;
 };
 
-const SortToggle: FC<SortToggleProps> = ({ onChange }) => {
+const SortToggle: FC<SortToggleProps> = ({ onChange, sortTypeValue }) => {
+  const [sortType, setSortType] = useState<SortEnum | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
 
@@ -27,8 +29,13 @@ const SortToggle: FC<SortToggleProps> = ({ onChange }) => {
 
   function onSelectSort(value: SortEnum): void {
     onChange(value);
+    setSortType(value);
     handleClose();
   }
+
+  useEffect(() => {
+    setSortType(sortTypeValue);
+  }, [sortTypeValue]);
 
   return (
     <Box className="sort-toggle">
@@ -57,6 +64,7 @@ const SortToggle: FC<SortToggleProps> = ({ onChange }) => {
             key={index}
             onClick={() => onSelectSort(value)}
             className="sort-toggle__menu-item"
+            selected={sortType === value}
           >
             {name}
           </MenuItem>

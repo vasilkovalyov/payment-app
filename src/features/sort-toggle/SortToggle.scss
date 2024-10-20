@@ -43,6 +43,14 @@
     &.MuiButtonBase-root {
       font-weight: 800;
       font-size: 14px;
+
+      &.Mui-selected {
+        background-color: rgb(var(--app-color-primary));
+
+        &:hover {
+          background-color: rgb(var(--app-color-primary));
+        }
+      }
     }
   }
 }
