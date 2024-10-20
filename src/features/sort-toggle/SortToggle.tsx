@@ -45,6 +45,7 @@ const SortToggle: FC<SortToggleProps> = ({ onChange, sortTypeValue }) => {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
+        aria-label="open sort menu"
         onClick={handleClick}
       >
         <FilterListIcon />

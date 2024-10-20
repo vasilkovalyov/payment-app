@@ -74,12 +74,10 @@ const SectionListTransaction: FC = () => {
   }
 
   useEffect(() => {
-    if (ref.current) {
+    if (!ref.current) {
+      ref.current = true;
       loadData();
     }
-    return () => {
-      ref.current = true;
-    };
   }, []);
 
   return (
@@ -103,7 +101,6 @@ const SectionListTransaction: FC = () => {
           </Typography>
           <SortToggle onChange={onChangeSort} sortTypeValue={sortType} />
         </Stack>
-
         <Box mb={{ xs: "16px", md: "36px" }}>
           {isLoading ? (
             <TableContainer className="transaction-table">
