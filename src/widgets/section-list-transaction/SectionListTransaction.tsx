@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 import {
@@ -31,6 +31,7 @@ const transactionRestUrl = "/data/transaction-list-rest.json?url";
 const SectionListTransaction: FC = () => {
   const settings = useAppSelector(getSettings);
 
+  const ref = useRef(false);
   const [sortType, setSortType] = useState<SortEnum | null>(null);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isShowingLoadmore, setIsShowingLoadmore] = useState<boolean>(true);
@@ -73,7 +74,12 @@ const SectionListTransaction: FC = () => {
   }
 
   useEffect(() => {
-    loadData();
+    if (ref.current) {
+      loadData();
+    }
+    return () => {
+      ref.current = true;
+    };
   }, []);
 
   return (
@@ -139,46 +145,6 @@ const SectionListTransaction: FC = () => {
               )}
             </>
           )}
-          {/* {transactions.map((item) => (
-            <TableContainer key={item.id} className="transaction-table">
-              <Table aria-label="transaction list">
-                <TableBody>
-                  {isLoading ? (
-                    <>
-                      {[...Array(3)].map((_, index) => (
-                        <TransactionRowLoader key={index} />
-                      ))}
-                    </>
-                  ) : (
-                    <>
-                      {transactions.map(
-                        ({
-                          id,
-                          image,
-                          amount,
-                          date,
-                          number,
-                          status,
-                          title
-                        }) => (
-                          <TransactionRow
-                            key={id}
-                            image={image}
-                            amount={amount}
-                            date={date}
-                            number={number}
-                            status={status}
-                            title={title}
-                            currencySymbol={settings.currencySymbol}
-                          />
-                        )
-                      )}
-                    </>
-                  )}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          ))} */}
         </Box>
         {isShowingLoadmore && (
           <Stack alignItems="center">
