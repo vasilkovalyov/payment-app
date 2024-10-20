@@ -1,18 +1,30 @@
-.section-list-transaction {
-  &__container {
-    &.MuiContainer-root {
-      max-width: 1240px;
+@use "styles/mixins.scss" as mixins;
+.transaction-table {
+  padding-left: 12px;
+
+  @include mixins.media(tablet) {
+    padding-left: 0;
+  }
+
+  &.MuiTableContainer-root {
+    width: auto;
+    margin-right: -20px;
+
+    @include mixins.media(tablet) {
+      margin-right: 0;
     }
   }
 
-  &__show-more-button {
-    max-width: 280px;
-    width: 100%;
-  }
-}
-
-.transaction-table {
   .MuiTable-root {
     border-spacing: 16px 16px;
+    width: 610px;
+
+    @include mixins.media(mobile) {
+      width: 690px;
+    }
+
+    @include mixins.media(tablet) {
+      width: 100%;
+    }
   }
 }

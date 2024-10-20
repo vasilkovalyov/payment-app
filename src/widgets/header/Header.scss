@@ -2,12 +2,16 @@
 @use "styles/breakpoints.scss" as breakpoints;
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
   box-shadow: 0 2px 7px 0 rgb(var(--app-color-black) / 0.72);
   background-color: rgb(var(--app-color-dark2));
   min-height: 64px;
   display: flex;
   padding-block: 16px;
   min-height: var(--app-header-height);
+  z-index: 10;
 
   &__container {
     &.MuiContainer-root {

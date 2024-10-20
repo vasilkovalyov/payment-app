@@ -1,3 +1,4 @@
+@use "styles/mixins.scss" as mixins;
 @use "styles/extend-styles.scss";
 
 .sort-toggle {
@@ -8,9 +9,22 @@
       border-radius: 4px;
       color: rgb(var(--app-color-light));
       background-color: rgb(var(--app-color-dark3));
-      width: 42px;
-      height: 42px;
       padding: 4px;
+      width: 24px;
+      height: 24px;
+
+      @include mixins.media(tablet) {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    svg {
+      font-size: 16px;
+
+      @include mixins.media(tablet) {
+        font-size: 28px;
+      }
     }
   }
 
@@ -29,6 +43,14 @@
     &.MuiButtonBase-root {
       font-weight: 800;
       font-size: 14px;
+
+      &.Mui-selected {
+        background-color: rgb(var(--app-color-primary));
+
+        &:hover {
+          background-color: rgb(var(--app-color-primary));
+        }
+      }
     }
   }
 }

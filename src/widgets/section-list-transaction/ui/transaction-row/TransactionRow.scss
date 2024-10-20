@@ -4,15 +4,46 @@
   &__cell {
     &:nth-child(1) {
       width: 48px;
+
+      @include mixins.media(tablet, max) {
+        display: none;
+      }
     }
 
     &:nth-child(2) {
+      width: 94px;
+      max-width: 94px;
+
+      @include mixins.media(mobile) {
+        width: 100px;
+        max-width: 100px;
+      }
+
+      @include mixins.media(tablet) {
+        width: 20%;
+        max-width: 20%;
+      }
+
       @include mixins.media(desktop) {
         max-width: 250px;
+        width: 250px;
       }
     }
 
     &:nth-child(3) {
+      width: 86px;
+      max-width: 86px;
+
+      @include mixins.media(mobile) {
+        width: 100px;
+        max-width: 100px;
+      }
+
+      @include mixins.media(tablet) {
+        width: 20%;
+        max-width: 20%;
+      }
+
       @include mixins.media(desktop) {
         width: 258px;
         max-width: 258px;
@@ -20,6 +51,19 @@
     }
 
     &:nth-child(4) {
+      width: 130px;
+      max-width: 130px;
+
+      @include mixins.media(mobile) {
+        width: 120px;
+        max-width: 120px;
+      }
+
+      @include mixins.media(tablet) {
+        width: 20%;
+        max-width: 20%;
+      }
+
       @include mixins.media(desktop) {
         width: 270px;
         max-width: 270px;
@@ -27,6 +71,19 @@
     }
 
     &:nth-child(5) {
+      width: 160px;
+      max-width: 160px;
+
+      @include mixins.media(mobile) {
+        width: 120px;
+        max-width: 120px;
+      }
+
+      @include mixins.media(tablet) {
+        width: 20%;
+        max-width: 20%;
+      }
+
       @include mixins.media(desktop) {
         width: 208px;
         max-width: 208px;
@@ -34,6 +91,18 @@
     }
 
     &:nth-child(6) {
+      width: 150px;
+      max-width: 150px;
+
+      @include mixins.media(tablet, max) {
+        display: none;
+      }
+
+      @include mixins.media(tablet) {
+        width: 14%;
+        max-width: 14%;
+      }
+
       @include mixins.media(desktop) {
         width: 150px;
         max-width: 150px;

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 import {
@@ -21,7 +21,7 @@ import { SortEnum } from "src/entities/models/sort";
 import { SortToggle } from "src/features";
 import { sortServiceInst } from "src/shared/sort-service";
 
-import { TransactionRow, TransactionRowLoader } from "./ui";
+import { TransactionRow, TransactionRowHead, TransactionRowLoader } from "./ui";
 
 import "./SectionListTransaction.scss";
 
@@ -31,6 +31,8 @@ const transactionRestUrl = "/data/transaction-list-rest.json?url";
 const SectionListTransaction: FC = () => {
   const settings = useAppSelector(getSettings);
 
+  const ref = useRef(false);
+  const [sortType, setSortType] = useState<SortEnum | null>(null);
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [isShowingLoadmore, setIsShowingLoadmore] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -49,6 +51,7 @@ const SectionListTransaction: FC = () => {
   }
 
   async function onLoadMore(): Promise<void> {
+    setSortType(null);
     try {
       setIsLoadingMore(true);
       const response = await axios.get<ITransaction[]>(transactionRestUrl);
@@ -61,75 +64,96 @@ const SectionListTransaction: FC = () => {
     }
   }
 
-  function onChangeSort(sortType: SortEnum): void {
+  function onChangeSort(sortTypeValue: SortEnum): void {
     const result = sortServiceInst.getSortedData(
       [...transactions],
-      sortType
+      sortTypeValue
     ) as ITransaction[];
+    setSortType(sortTypeValue);
     setTransactions(result);
   }
 
   useEffect(() => {
-    loadData();
+    if (!ref.current) {
+      ref.current = true;
+      loadData();
+    }
   }, []);
 
   return (
-    <Box
-      component="section"
-      py={{ xs: "22px", md: "48px" }}
-      className="section-list-transaction"
-    >
-      <Container className="section-list-transaction__container">
+    <Box component="section" py={{ xs: "22px", md: "48px" }}>
+      <Container>
         <Stack
           direction="row"
           justifyContent="space-between"
           gap="20px"
           mb={{ xs: "16px", md: "16px" }}
         >
-          <Typography variant="h2">Last Transactions</Typography>
-          <SortToggle onChange={onChangeSort} />
+          <Typography variant="h2">
+            <Typography
+              component="span"
+              fontSize="inherit"
+              display={{ xs: "none", md: "inline-block" }}
+            >
+              Last
+            </Typography>{" "}
+            Transactions
+          </Typography>
+          <SortToggle onChange={onChangeSort} sortTypeValue={sortType} />
         </Stack>
-
         <Box mb={{ xs: "16px", md: "36px" }}>
-          <TableContainer className="transaction-table">
-            <Table aria-label="transaction list">
-              <TableBody>
-                {isLoading ? (
-                  <>
-                    {[...Array(3)].map((_, index) => (
-                      <TransactionRowLoader key={index} />
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    {transactions.map(
-                      ({ id, image, amount, date, number, status, title }) => (
-                        <TransactionRow
-                          key={id}
-                          image={image}
-                          amount={amount}
-                          date={date}
-                          number={number}
-                          status={status}
-                          title={title}
-                          currencySymbol={settings.currencySymbol}
-                        />
-                      )
-                    )}
-                  </>
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          {isLoading ? (
+            <TableContainer className="transaction-table">
+              <Table aria-label="transaction list">
+                <TableBody>
+                  {[...Array(3)].map((_, index) => (
+                    <TransactionRowLoader key={index} />
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <>
+              {transactions.map(
+                ({ id, image, amount, date, number, status, title }) => (
+                  <Box key={id} mb={{ xs: "14px", md: "6px" }}>
+                    <TransactionRowHead
+                      image={image}
+                      title={title}
+                      status={status}
+                    />
+                    <TableContainer className="transaction-table">
+                      <Table aria-label="transaction list">
+                        <TableBody>
+                          <TransactionRow
+                            image={image}
+                            amount={amount}
+                            date={date}
+                            number={number}
+                            status={status}
+                            title={title}
+                            currencySymbol={settings.currencySymbol}
+                          />
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </Box>
+                )
+              )}
+            </>
+          )}
         </Box>
         {isShowingLoadmore && (
           <Stack alignItems="center">
             <Button
               variant="contained"
               color="secondary"
-              className="section-list-transaction__show-more-button"
               disabled={isLoadingMore}
               onClick={onLoadMore}
+              sx={{
+                maxWidth: "280px",
+                width: "100%"
+              }}
             >
               Show More
             </Button>

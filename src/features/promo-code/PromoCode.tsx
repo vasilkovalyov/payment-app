@@ -4,13 +4,12 @@ import { Box, Stack, Button, TextField, InputAdornment } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
 export type PromoCodeProps = {
-  title?: string;
-  subtitle?: string;
   placeholder?: string;
+  success?: boolean;
   onClick: (value: string) => void;
 };
 
-const PromoCode: FC<PromoCodeProps> = ({ placeholder, onClick }) => {
+const PromoCode: FC<PromoCodeProps> = ({ placeholder, success, onClick }) => {
   const [value, setValue] = useState<string>("");
 
   function onHandleSubmit(): void {
@@ -38,9 +37,13 @@ const PromoCode: FC<PromoCodeProps> = ({ placeholder, onClick }) => {
           }}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
-                <TaskAltIcon color="success" />
-              </InputAdornment>
+              <>
+                {success && (
+                  <InputAdornment position="end">
+                    <TaskAltIcon color="success" />
+                  </InputAdornment>
+                )}
+              </>
             )
           }}
           onChange={(e) => onChangeCode(e.currentTarget.value)}
