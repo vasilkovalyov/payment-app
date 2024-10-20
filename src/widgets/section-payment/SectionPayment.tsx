@@ -69,6 +69,7 @@ const SectionPayment: FC = () => {
     promocode: string | null
   ): void {
     console.log(amount, promocode);
+    closeModal();
   }
 
   useEffect(() => {
